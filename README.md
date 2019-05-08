@@ -1,4 +1,7 @@
 ## 微信小程序开发问题总结
+* request 合法域名设置
+	* 第三方域名需要添加
+		* https://restapi.amap.com
 * page之间数据交互
 	* 页面 A 跳转到页面 B
 	* 页面 A 提供 bridge 对象，包含 getData，setData 方法
