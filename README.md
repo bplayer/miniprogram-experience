@@ -69,8 +69,8 @@
 		* 不应该使用 `wx:if` `wx:elif` 重复写相同的 view 元素
 
 * map 问题
-	* map的默认显示区域可以用include-points设置，但建议取值为最大最小的坐标点，避免setdata是数据过大导致加载缓慢
-	* 设置地图路径画线数据（polyline）：由于小程序setdata设置一次最大为1M，路径长往往会超出，而且页面加载会极度缓慢，建议数据分开设置
+	* map的默认显示区域可以用 include-points 设置，但建议取值为最大最小的坐标点，避免 setdata 是数据过大导致加载缓慢
+	* 设置地图路径画线数据（ polyline ）：由于小程序 setdata 设置一次最大为1M，路径长往往会超出，而且页面加载会极度缓慢，建议数据分开设置
 	
 	```
 	for (var i = 0; i < data.points.length; i++) {
@@ -86,6 +86,6 @@
         }
 	```
 	
-	* 设置地图marker问题：当设置的marker需要显示callout属性信息时，多个callout的id必须不同，否则在Android设备上所有marker只会显示最后一条marker的callout信息
+	* 设置地图 marker 问题：当设置的 marker 需要显示 callout 属性信息时，多个 callout 的id必须不同，否则在 Android 设备上所有 marker 只会显示最后一条 marker 的 callout 信息
 * setData 太慢问题
 	* 【微信小程序】性能优化<https://juejin.im/post/5b496d5d5188251a90187635>
