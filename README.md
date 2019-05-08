@@ -22,6 +22,7 @@
 * 全屏弹框问题
 	* 无法覆盖 map、textarea 等原生组件
 	* 使用 cover-view，在 ios10 上不兼容，无法显示
+	* cover-view 圆角设置只能设置所有四个角，无法单独设置其中几个圆角
 	* 最终方案，弹框改为跳转到新页面
 
 * 导航进入 n 个页面之后，如何返回首页
@@ -68,7 +69,23 @@
 		* 不应该使用 `wx:if` `wx:elif` 重复写相同的 view 元素
 
 * map 问题
-	* 13333
-	* 2
-	* 3
+	* map的默认显示区域可以用include-points设置，但建议取值为最大最小的坐标点，避免setdata是数据过大导致加载缓慢
+	* 设置地图路径画线数据（polyline）：由于小程序setdata设置一次最大为1M，路劲长往往会超出，而且页面加载会极度缓慢，建议数据分开设置
+	
+	```
+	for (var i = 0; i < data.points.length; i++) {
+          var key = "polyline[" + i + "]"
+          var obj = {}
+          obj[key] = {
+            points: data.points[i],
+            arrowLine: true,
+            color: "#4693fd",
+            width: 5,
+          }
+          that.setData(obj)
+        }
+	```
+	
+	* 设置地图marker问题：当设置的marker需要显示callout属性信息时，多个callout的id必须不同，否则在Android设备上所有marker只会显示最后一条marker的callout信息
 * setData 太慢问题
+	* 【微信小程序】性能优化<https://juejin.im/post/5b496d5d5188251a90187635>
