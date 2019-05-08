@@ -70,7 +70,7 @@
 
 * map 问题
 	* map的默认显示区域可以用include-points设置，但建议取值为最大最小的坐标点，避免setdata是数据过大导致加载缓慢
-	* 设置地图路径画线数据（polyline）：由于小程序setdata设置一次最大为1M，路劲长往往会超出，而且页面加载会极度缓慢，建议数据分开设置
+	* 设置地图路径画线数据（polyline）：由于小程序setdata设置一次最大为1M，路径长往往会超出，而且页面加载会极度缓慢，建议数据分开设置
 	
 	```
 	for (var i = 0; i < data.points.length; i++) {
