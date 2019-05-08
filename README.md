@@ -3,7 +3,22 @@
 	* 页面 A 跳转到页面 B
 	* 页面 A 提供 bridge 对象，包含 getData，setData 方法
 	* 页面 B 里，拿到页面 A 的 bridge 对象，进行数据交互
+*  page 里面 data 数据太多太乱，应该整理分类
 
+	* 页面相关的数据可以放在 viewModel 对象里面
+	* 网络相关的数据可以放在 apiModel 里面
+
+		```
+		...
+		viewModel:{},
+		apiModel: {
+			responseModel: {},
+			requestModel: {}
+		},
+		...
+		
+		```
+		
 * 全屏弹框问题
 	* 无法覆盖 map、textarea 等原生组件
 	* 使用 cover-view，在 ios10 上不兼容，无法显示
