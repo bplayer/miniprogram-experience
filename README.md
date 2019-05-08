@@ -88,4 +88,5 @@
 	
 	* 设置地图 marker 问题：当设置的 marker 需要显示 callout 属性信息时，多个 callout 的id必须不同，否则在 Android 设备上所有 marker 只会显示最后一条 marker 的 callout 信息
 * setData 太慢问题
+* showToast不显示问题：当同时调用showToast和showLoading的时候，showToast会不显示
 	* 【微信小程序】性能优化<https://juejin.im/post/5b496d5d5188251a90187635>
