@@ -89,11 +89,14 @@
         }
 	```
 	
-	* 设置地图 marker 问题：当设置的 marker 需要显示 callout 属性信息时，多个 callout 的id必须不同，否则在 Android 设备上所有 marker 只会显示最后一条 marker 的 callout 信息
+	* 设置地图 marker 问题
+		* 当设置的 marker 需要显示 callout 属性信息时，多个 callout 的id必须不同，否则在 Android 设备上所有 marker 只会显示最后一条 marker 的 callout 信息
 * setData 太慢问题
-* showToast不显示问题：当同时调用showToast和showLoading的时候，showToast会不显示
 	* 【微信小程序】性能优化<https://juejin.im/post/5b496d5d5188251a90187635>
 
+* showToast 不显示问题
+	* 当同时调用 showToast 和 showLoading 的时候，showToast 提示框会不显示
+ 
 * textarea 层级过高，导致内容穿透
 	* 原因：textarea 是原生控件。原生组件的层级是最高的，所以页面中的其他组件无论设置 z-index 为多少，都无法盖在原生组件上
 	* 解决方案：textarea 输入完成时，隐藏该 textarea，将输入内容显示在一个 text 文本框；当点击 text 时，隐藏 text，显示 textarea,并获取焦点
