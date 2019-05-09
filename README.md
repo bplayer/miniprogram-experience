@@ -53,7 +53,7 @@
 			      })
    		}
 		```
-	* 当前方案，在当前页面 onUnload 里面设置 flag，返回后，在前一个页面调用 `wx.reLaunch`
+	* 在当前页面 onUnload 里面设置 flag，返回后，在前一个页面调用 `wx.reLaunch`。问题，导航页面层级太多，后面页面点击无响应
 
 		```
 		  //在前一个页面
@@ -66,28 +66,53 @@
 	 	   }
 	
 		```
+
+	* 当前方案，改变进入当前页面方式。通过首页进入当前页面，这样返回时就直接到首页了。
+
+		```
+		  //前一个页面通过首页跳转到后面页面
+		  wx.reLaunch({
+	        url: '../index/index?redirectTo=my-zoe',
+	      })
+	
+		```
+	
 * 避免重复代码
 	* wxml 中可能有同样的 view，根据不同条件使用不同的 class 控制样式
 		* 应该把条件判断代码写在 class 里面
 		* 不应该使用 `wx:if` `wx:elif` 重复写相同的 view 元素
 
+* input 判断是否为空出错问题
+
+	```
+	//当 value 是 number 类型时，转为 String 类型
+	input.text = String(value)
+	
+	//字符串判断逻辑
+	if (input.text && input.text.length) {
+	  return true
+	}
+	
+	```
+
+
 * map 问题
 	* map的默认显示区域可以用 include-points 设置，但建议取值为最大最小的坐标点，避免 setdata 是数据过大导致加载缓慢
 	* 设置地图路径画线数据（ polyline ）：由于小程序 setdata 设置一次最大为1M，路径长往往会超出，而且页面加载会极度缓慢，建议数据分开设置
 	
-	```
-	for (var i = 0; i < data.points.length; i++) {
-          var key = "polyline[" + i + "]"
-          var obj = {}
-          obj[key] = {
-            points: data.points[i],
-            arrowLine: true,
-            color: "#4693fd",
-            width: 5,
-          }
-          that.setData(obj)
-        }
-	```
+		```
+		for (var i = 0; i < data.points.length; i++) {
+	          var key = "polyline[" + i + "]"
+	          var obj = {}
+	          obj[key] = {
+	            points: data.points[i],
+	            arrowLine: true,
+	            color: "#4693fd",
+	            width: 5,
+	          }
+	          that.setData(obj)
+	        }
+		```
 	
 	* 设置地图 marker 问题
 		* 当设置的 marker 需要显示 callout 属性信息时，多个 callout 的id必须不同，否则在 Android 设备上所有 marker 只会显示最后一条 marker 的 callout 信息
