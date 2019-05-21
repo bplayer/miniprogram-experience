@@ -30,7 +30,7 @@
 
 * 导航进入 n 个页面之后，如何返回首页
 	* 无法监听处理左上角返回按钮事件
-	* 官方文档 [返回的页面数，如果 delta 大于现有页面数，则返回到首页。](https://developers.weixin.qq.com/miniprogram/dev/api/wx.navigateBack.html) 实际在真机上导致退出当前小程序
+	* 官方文档 [返回的页面数，如果 delta 大于现有页面数，则返回到首页。](https://developers.weixin.qq.com/miniprogram/dev/api/wx.navigateBack.html) ~~实际在真机上导致退出当前小程序~~
 	
 		```
 		//在当前页面
@@ -79,6 +79,9 @@
 	
 		```
 	
+* 如何退出小程序，官方没有退出小程序 api，导航组件有退出功能
+	* http://www.manongjc.com/article/104130.html
+	* https://developers.weixin.qq.com/miniprogram/dev/component/navigator.html
 * 避免重复代码
 	* wxml 中可能有同样的 view，根据不同条件使用不同的 class 控制样式
 		* 应该把条件判断代码写在 class 里面
