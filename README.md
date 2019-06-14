@@ -130,3 +130,13 @@
 * textarea 层级过高，导致内容穿透
 	* 原因：textarea 是原生控件。原生组件的层级是最高的，所以页面中的其他组件无论设置 z-index 为多少，都无法盖在原生组件上
 	* 解决方案：textarea 输入完成时，隐藏该 textarea，将输入内容显示在一个 text 文本框；当点击 text 时，隐藏 text，显示 textarea,并获取焦点
+	
+* Object.values() 不存在(方法解释：将Map中的所有 value 组成一个数组)
+	* 原因：微信小程序不支持 Object.values()  https://developers.weixin.qq.com/miniprogram/dev/framework/runtime/js-support.html
+	* 解决方案：
+	    let arr = Object.keys(selectedObjMap).map(function(key) {
+            return selectedObjMap[key];
+        });
+	
+	
+	
